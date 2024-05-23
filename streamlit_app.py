@@ -29,6 +29,6 @@ price = df2.collect()[0][1]
 # Mostrando la Imagen
 st.image(url, width=400, caption= product_caption)
 
-st.text("Price: ", price)
-#st.text("Sizes Available: ", df2.collect()[0][2])
-#st.text("Description: ", df2.collect()[0][3])
+st.text("Price: " + price)
+st.text("Sizes Available: " + df2.collect()[0][2])
+st.text("Description: " + df2.collect()[0][3])
