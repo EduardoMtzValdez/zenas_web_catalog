@@ -28,7 +28,7 @@ my_catalog = my_cur.fetchall()
 #my_dataframe = session.table("ZENAS_ATHLEISURE_DB.PRODUCTS.CATALOG_FOR_WEBSITE").select(col('COLOR_OR_STYLE'), col('DIRECT_URL'))
 my_dataframe = session.table("ZENAS_ATHLEISURE_DB.PRODUCTS.CATALOG_FOR_WEBSITE")
 #df = pandas.DataFrame(my_catalog)
-df = my_dataframe.toPandas(my_dataframe)
+df = my_dataframe.toPandas()
 
 # temp write the dataframe to the page so I Can see what I am working with
 # streamlit.write(df)
