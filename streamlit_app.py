@@ -29,5 +29,5 @@ url = df2.collect()[0][0]
 st.image(url, width=400, caption= product_caption)
 
 st.text("Price: ", df2.collect()[0][1])
-st.Text("Sizes Available: ",df2.collect()[0][2])
-st.Text(df2.collect()[0][3])
+st.text("Sizes Available: ", df2.collect()[0][2])
+st.text("Description: ", df2.collect()[0][3])
