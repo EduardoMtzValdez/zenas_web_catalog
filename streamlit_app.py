@@ -20,20 +20,14 @@ df = my_dataframe.to_pandas()
 option = st.selectbox('Pick a sweatsuit color or style:', color_list)
 
 ## We'll build the image caption now, since we can
-product_caption = 'Our warm, comfortable, ' + option + ' sweatsuit!'
+product_caption = "Our warm, comfortable, " + option + " sweatsuit!"
 ## use the option selected to go back and get all the info from the database
 df2 = session.table("ZENAS_ATHLEISURE_DB.PRODUCTS.CATALOG_FOR_WEBSITE").select(col('DIRECT_URL'), col('PRICE'), col('SIZE_LIST'), col('UPSELL_PRODUCT_DESC')).where("color_or_style = '" + option + "'")
-#df2 = df.to_pandas()
 url = df2.collect()[0][0]
-st.text(url)
-st.stop()
 
-st.image(
-df2[0],
-width=400,
-caption= product_caption
-)
-st.write('Price: ', df2[1])
-st.write('Sizes Available: ',df2[2])
-st.write(df2[3])
+# Mostrando la Imagen
+st.image(url, width=400, caption= product_caption)
 
+st.text("Price: ", df2.collect()[1])
+st.Text("Sizes Available: ",df2.collect()[2])
+st.Text(df2.collect()[3])
