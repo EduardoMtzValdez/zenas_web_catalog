@@ -16,17 +16,15 @@ my_dataframe = session.table("ZENAS_ATHLEISURE_DB.PRODUCTS.CATALOG_FOR_WEBSITE")
 #Convert df to pandas
 df = my_dataframe.to_pandas()
 
-selection_list = st.multiselect('Choose 1 set:', df, max_selections=1)
-#st.stop()
-
-
 # temp write the dataframe to the page so I Can see what I am working with
 streamlit.write(df)
 # put the first column into a list
 color_list = df[0].values.tolist()
-# print(color_list)
+ print(color_list)
 # Let's put a pick list here so they can pick the color
 option = streamlit.selectbox('Pick a sweatsuit color or style:', list(color_list))
+
+st.stop()
 
 ## We'll build the image caption now, since we can
 #product_caption = 'Our warm, comfortable, ' + option + ' sweatsuit!'
