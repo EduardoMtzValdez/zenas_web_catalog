@@ -6,19 +6,10 @@ import pandas
 
 st.title('Zena\'s Amazing Athleisure Catalog')
 
-# Write directly to the app
-#st.title(":cup_with_straw: Customize Your Smoothie! :cup_with_straw:")
-#st.write(    """**Choose the fruits you want in your custom Smoothie!**""")
-
-#name_on_order = st.text_input('Name on Smoothie:')
-#st.write('The name on your Smoothie will be:', name_on_order)
-
 # connect to snowflake
 cnx = st.connection("snowflake")
 session = cnx.session()
-
-#cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = cnx.cursor()
+my_cur = session.cursor()
 
 # run a snowflake query and put it all in a var called my_catalog
 my_cur.execute("select color_or_style from ZENAS_ATHLEISURE_DB.PRODUCTS.catalog_for_website")
