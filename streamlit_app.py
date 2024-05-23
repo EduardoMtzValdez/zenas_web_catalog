@@ -24,10 +24,11 @@ product_caption = "Our warm, comfortable, " + option + " sweatsuit!"
 ## use the option selected to go back and get all the info from the database
 df2 = session.table("ZENAS_ATHLEISURE_DB.PRODUCTS.CATALOG_FOR_WEBSITE").select(col('DIRECT_URL'), col('PRICE'), col('SIZE_LIST'), col('UPSELL_PRODUCT_DESC')).where("color_or_style = '" + option + "'")
 url = df2.collect()[0][0]
+price = df2.collect()[0][1]
 
 # Mostrando la Imagen
 st.image(url, width=400, caption= product_caption)
 
-st.text("Price: ", df2.collect()[0][1])
-st.text("Sizes Available: ", df2.collect()[0][2])
-st.text("Description: ", df2.collect()[0][3])
+st.text("Price: ", price)
+#st.text("Sizes Available: ", df2.collect()[0][2])
+#st.text("Description: ", df2.collect()[0][3])
