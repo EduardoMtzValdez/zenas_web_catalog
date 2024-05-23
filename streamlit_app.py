@@ -15,11 +15,7 @@ st.title('My Parents New Healthy Dinner')
 #session = get_active_session()
 cnx = st.connection("snowflake")
 session = cnx.session()
+my_dataframe = session.table("ZENAS_ATHLEISURE_DB.PRODUCTS.SWEATSUITS").select(col('COLOR_OR_STYLE'))
 
-my_cur = session.cursor()
-session.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
-my_data_row = session.fetchone()
-
-my_data_row = my_cur.fetchone()
 st.text("Hello from Snowflake:")
-st.text(my_data_row)
+st.text(my_dataframe)
