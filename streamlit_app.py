@@ -9,17 +9,16 @@ st.title('Zena\'s Amazing Athleisure Catalog')
 # connect to snowflake
 cnx = st.connection("snowflake")
 session = cnx.session()
-##my_cur = cnx.cursor()
-
-# run a snowflake query and put it all in a var called my_catalog
-##my_cur.execute("select color_or_style from ZENAS_ATHLEISURE_DB.PRODUCTS.catalog_for_website")
-##my_catalog = my_cur.fetchall()
 
 # put the data into a dataframe
 #my_dataframe = session.table("ZENAS_ATHLEISURE_DB.PRODUCTS.CATALOG_FOR_WEBSITE").select(col('COLOR_OR_STYLE'), col('DIRECT_URL'))
 my_dataframe = session.table("ZENAS_ATHLEISURE_DB.PRODUCTS.CATALOG_FOR_WEBSITE")
-#df = pandas.DataFrame(my_catalog)
-df = my_dataframe.toPandas()
+#Convert df to pandas
+df = my_dataframe.to_pandas()
+
+selection_list = st.multiselect('Choose 1 set:', df, max_selections=1)
+#st.stop()
+
 
 # temp write the dataframe to the page so I Can see what I am working with
 streamlit.write(df)
