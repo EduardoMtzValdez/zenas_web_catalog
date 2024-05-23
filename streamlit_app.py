@@ -13,16 +13,18 @@ session = cnx.session()
 # put the data into a dataframe
 #my_dataframe = session.table("ZENAS_ATHLEISURE_DB.PRODUCTS.CATALOG_FOR_WEBSITE").select(col('COLOR_OR_STYLE'), col('DIRECT_URL'))
 my_dataframe = session.table("ZENAS_ATHLEISURE_DB.PRODUCTS.CATALOG_FOR_WEBSITE")
+my_list = session.table("ZENAS_ATHLEISURE_DB.PRODUCTS.CATALOG_FOR_WEBSITE").select(col('COLOR_OR_STYLE')
+color_list = my_list.to_pandas()                                                                                    
 #Convert df to pandas
 df = my_dataframe.to_pandas()
 
 # temp write the dataframe to the page so I Can see what I am working with
-st.write(df)
+#st.write(df)
 # put the first column into a list
-color_list = df[0].values.tolist()
-print(color_list)
+##color_list = df[0].values.tolist()
+#print(color_list)
 # Let's put a pick list here so they can pick the color
-option = st.selectbox('Pick a sweatsuit color or style:', list(color_list))
+option = st.selectbox('Pick a sweatsuit color or style:', color_list)
 
 st.stop()
 
