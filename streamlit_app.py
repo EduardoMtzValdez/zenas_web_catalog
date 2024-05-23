@@ -32,7 +32,7 @@ option = st.selectbox('Pick a sweatsuit color or style:', color_list)
 product_caption = 'Our warm, comfortable, ' + option + ' sweatsuit!'
 ## use the option selected to go back and get all the info from the database
 df2 = session.table("ZENAS_ATHLEISURE_DB.PRODUCTS.CATALOG_FOR_WEBSITE").select(col('DIRECT_URL'), col('PRICE'), col('SIZE_LIST'), col('UPSELL_PRODUCT_DESC')).where("color_or_style = '" + option + "'")
-df3 = df2t.tolist()
+df3 = df2.tolist()
 product_url = df3[0]
 print(product_url)
 #my_cur.execute("select direct_url, price, size_list, upsell_product_desc from ZENAS_ATHLEISURE_DB.PRODUCTS.catalog_for_website where color_or_style = '" + option + "';")
