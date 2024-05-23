@@ -25,9 +25,9 @@ product_caption = 'Our warm, comfortable, ' + option + ' sweatsuit!'
 df2 = session.table("ZENAS_ATHLEISURE_DB.PRODUCTS.CATALOG_FOR_WEBSITE").select(col('DIRECT_URL'), col('PRICE'), col('SIZE_LIST'), col('UPSELL_PRODUCT_DESC')).where("color_or_style = '" + option + "'")
 #df2 = df.to_pandas()
 url = df2.collect()[0][0]
-print(url)
-#my_cur.execute("select direct_url, price, size_list, upsell_product_desc from ZENAS_ATHLEISURE_DB.PRODUCTS.catalog_for_website where color_or_style = '" + option + "';")
-#df2 = my_cur.fetchone()
+st.text(url)
+st.stop()
+
 st.image(
 df2[0],
 width=400,
